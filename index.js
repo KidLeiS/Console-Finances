@@ -99,7 +99,7 @@ console.log("Total Months: " + totalMonths);
 //Calculator for total Profit/Loss
 var sum = 0;
 finances.forEach((element) => sum += element[1]);
-console.log("Total :$" + sum);
+console.log("Total: $" + sum);
 
 //Calculator for average change in Profit/Loss
 var totalChange = (finances[finances.length-1][1] - finances[0][1]);
