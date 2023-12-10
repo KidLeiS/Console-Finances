@@ -86,3 +86,50 @@ var finances = [
   ['Jan-2017', 138230],
   ['Feb-2017', 671099],
 ];
+
+
+// Title
+console.log("Financial Analysis");
+console.log("----------------------------");
+
+//Calculator for total months
+var totalMonths = finances.length;
+console.log("Total Months: " + totalMonths);
+
+//Calculator for total Profit/Loss
+var sum = 0;
+finances.forEach((element) => sum += element[1]);
+console.log("Total :$" + sum);
+
+//Calculator for average change in Profit/Loss
+var totalChange = (finances[finances.length-1][1] - finances[0][1]);
+console.log("Average Change: " + (totalChange/(totalMonths-1)).toFixed(2));
+
+//An array with the Change in Profit/Loss as a column
+var ChangePnL = [];
+  for (var i = 0; i < finances.length - 1; i++) {
+    ChangePnL.unshift([...finances[i+1], (finances[i+1][1] - finances[i][1])]);
+  }
+
+
+// console.log(ChangePnL);
+
+// Maximum Profit/Loss change calculator
+var maxChange = ChangePnL[0];
+for (var i=0; i < ChangePnL.length; i++) {
+  if (ChangePnL[i][2] > maxChange[2]) {
+    maxChange = ChangePnL[i];
+  };
+}
+
+console.log("Greatest Increase in Profits/Losses: " + maxChange[0] + " ($" + maxChange[2] + ")");
+
+// Minimum Profit/Loss change calculator
+var minChange = ChangePnL[0];
+for (var i=0; i < ChangePnL.length; i++) {
+  if (ChangePnL[i][2] < minChange[2]) {
+    minChange = ChangePnL[i];
+  };
+}
+
+console.log("Greatest Decrease in Porfits/Losses: " + minChange[0] + " ($" + minChange[2] + ")");
